@@ -92,7 +92,9 @@
 
 .navbar {
     display: none;
+    border-radius: 20px;
 }
+
 
 //home
 #home {
@@ -576,6 +578,7 @@
 
 .light-box {
     @include flex(flex, row, wrap, center, center);
+    align-content: center;
     position: fixed;
     top: 0;
     left: 0;
@@ -1101,16 +1104,26 @@ textarea {
     .minombre{
         display: none;
     }
+    .alejo{
+        font-size: 3rem;
+    }
+    #servicios{
+        height: 1500px;
+    }
+    .div__servicios{
+        height: 1500px;
+    }
     .servicios__diseño{
-        width: calc(100/6);
+        width: 100%;
         height: 20em;
         p{
             font-size: 1rem;
         }
     }
     .servicios{
-        @include flex(flex, column-reverse, wrap, flex-end, center);
-        align-content: space-around;
+        @include flex(flex, row, wrap, center, center);
+        align-content: flex-start;
+        width: 100%;
         &__svg{
             font-size: 3rem;
             margin-bottom: 5px;
@@ -1162,5 +1175,52 @@ textarea {
         width: 60px;
         line-height: 45px;
     }
-    
+    .footer__container{
+        top: 350px;
+    }
+}
+@media screen and(max-width:550px){
+    #form{
+        height: 300px;
+    }
+    .light-box{
+        align-content: flex-start;
+    }
+    .nombre{
+        width: 100%;
+        font-size: 1rem;
+    }
+    .email{
+        width: 100%;
+        font-size: 1rem;
+    }
+    input{
+        margin: 0;
+        padding: 5px;
+    }
+    textarea{
+        margin: 0;
+        padding: 0;
+        height: 100px;
+    }
+}
+@media screen and (max-width:360px){
+    #tudeveloper{
+        height: 650px;
+    }
+    .section__container{
+        height: 650px;
+    }
+    .align__p__text{
+        height: 100%;
+    }
+    .precios__container__landing{
+        height: 500px;
+    }
+    .precios__container__inst{
+        height: 500px;
+    }
+    .precios__container__ecommerce{
+        height: 500px;
+    }
 }

@@ -122,7 +122,8 @@ p {
           transition: all 0.3s ease; }
 
 .navbar {
-  display: none; }
+  display: none;
+  border-radius: 20px; }
 
 #home {
   height: 800px;
@@ -580,6 +581,7 @@ p {
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  align-content: center;
   position: fixed;
   top: 0;
   left: 0;
@@ -975,18 +977,25 @@ textarea {
 @media screen and (max-width: 609px) {
   .minombre {
     display: none; }
+  .alejo {
+    font-size: 3rem; }
+  #servicios {
+    height: 1500px; }
+  .div__servicios {
+    height: 1500px; }
   .servicios__diseño {
-    width: calc(100/6);
+    width: 100%;
     height: 20em; }
     .servicios__diseño p {
       font-size: 1rem; }
   .servicios {
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    align-content: space-around; }
+    align-content: flex-start;
+    width: 100%; }
     .servicios__svg {
       font-size: 3rem;
       margin-bottom: 5px; }
@@ -1021,4 +1030,39 @@ textarea {
   .whatsapp {
     height: 60px;
     width: 60px;
-    line-height: 45px; } }
+    line-height: 45px; }
+  .footer__container {
+    top: 350px; } }
+
+@media screen and (max-width: 550px) {
+  #form {
+    height: 300px; }
+  .light-box {
+    align-content: flex-start; }
+  .nombre {
+    width: 100%;
+    font-size: 1rem; }
+  .email {
+    width: 100%;
+    font-size: 1rem; }
+  input {
+    margin: 0;
+    padding: 5px; }
+  textarea {
+    margin: 0;
+    padding: 0;
+    height: 100px; } }
+
+@media screen and (max-width: 360px) {
+  #tudeveloper {
+    height: 650px; }
+  .section__container {
+    height: 650px; }
+  .align__p__text {
+    height: 100%; }
+  .precios__container__landing {
+    height: 500px; }
+  .precios__container__inst {
+    height: 500px; }
+  .precios__container__ecommerce {
+    height: 500px; } }
