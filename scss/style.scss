@@ -93,13 +93,18 @@
 .navbar {
     display: none;
     border-radius: 20px;
+    background: white;
+    transition: all 0.3s ease-in-out;
 }
+
+
 
 
 //home
 #home {
     height: 800px;
     background-image: url(../img/mono.webp);
+    background-position: top;
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -219,7 +224,8 @@
         color: white;
         text-align: center;
         padding: 20px;
-        h2{
+
+        h2 {
             font-size: 2rem;
         }
     }
@@ -636,9 +642,11 @@
         color: white;
     }
 }
-.formulario{
+
+.formulario {
     display: flex;
 }
+
 #form {
     width: 450px;
     margin: auto;
@@ -747,7 +755,7 @@ textarea {
 //footer
 .footer {
     background-image: url(../img/mono3.webp);
-    background-position: top;
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -954,17 +962,33 @@ textarea {
         height: 120px;
         border-radius: 0;
     }
-    #servicios{
+
+    #servicios {
         height: 100rem;
     }
-    .servicios{
+
+    .servicios {
         padding: 5px;
     }
 }
 
 @media screen and (max-width:849px) {
+    .header {
+        height: 130px;
+
+        &__container {
+            height: 130px;
+        }
+    }
+
     .header__container__menu {
-        height: 100px;
+        height: 130px;
+        justify-content: flex-end;
+
+        &__ul {
+            width: 100%;
+            @include flex(flex, row, wrap, center, center);
+        }
     }
 
     .nav {
@@ -973,6 +997,7 @@ textarea {
 
     .navbar {
         display: flex;
+        float: inline-end;
     }
 
     #home {
@@ -994,233 +1019,311 @@ textarea {
         @include flex(flex, row, wrap, center, center);
         padding: 0;
     }
-    .servicios__diseño{
+
+    .servicios__diseño {
         width: 20em;
         height: 30em;
-        h2{
+
+        h2 {
             font-size: 1.5rem;
         }
     }
-    .precios{
-        padding: 20px 20px;
+
+    .precios {
+        padding: 100px 20px;
     }
 }
-@media screen and (max-width:675px){
-    .tudeveloper{
-        padding: 10px;
-        h2{
-            font-size: 2rem;
-        }
-        p{
-            padding: 0;
-            font-size: 1.2rem;
+
+@media screen and (max-width:675px) {
+    #home{
+        background-image: url(../img/mono4.webp);
+        background-position: top;
+    }
+    #servicios{
+        background-image: url(../img/desktop.webp);
+        background-position: center;
+    }
+    #trabajos{
+        background-image: url(../img/desktop.webp);
+        background-position: center;
+    }
+    .tudeveloper {
+        padding: 130px 10px 0 10px;
+    }
+
+    .align {
+        font-size: 2.5rem;
+
+        &__p {
+            font-size: 1.8rem;
+
+            &__text {
+                padding: 0;
+                font-size: 1.2rem;
+            }
         }
     }
-    .precios{
-        padding: 5px 5px;
+
+
+    .precios {
+        padding: 130px 5px;
         width: 100%;
-        &__text{
-            h2{
+
+        &__text {
+            h2 {
                 font-size: 2rem;
             }
-            p{
+
+            p {
                 font-size: 1rem;
             }
         }
-        &__container{
+
+        &__container {
             @include flex(flex, column, wrap, space-around, center);
             width: 100%;
-            &__landing{
+
+            &__landing {
                 width: 100%;
                 height: 400px;
                 margin-bottom: 20px;
-                &__title{
-                    svg{
+
+                &__title {
+                    svg {
                         font-size: 5rem;
                     }
-                    h4{
+
+                    h4 {
                         font-size: 2rem;
                     }
                 }
-                &__content{
-                    ul{
-                        li{
+
+                &__content {
+                    ul {
+                        li {
                             font-size: 1.5rem;
                         }
                     }
                 }
             }
-            &__inst{
+
+            &__inst {
                 width: 100%;
                 height: 400px;
                 margin-bottom: 20px;
-                &__title{
-                    svg{
+
+                &__title {
+                    svg {
                         font-size: 5rem;
                         margin-top: 5px;
                     }
-                    h4{
+
+                    h4 {
                         font-size: 2rem;
                     }
                 }
-                &__content{
-                    ul{
-                        li{
+
+                &__content {
+                    ul {
+                        li {
                             font-size: 1.5rem;
                         }
                     }
                 }
             }
-            &__ecommerce{
+
+            &__ecommerce {
                 width: 100%;
                 height: 400px;
-                &__title{
-                    svg{
+
+                &__title {
+                    svg {
                         font-size: 7rem;
                     }
-                    h4{
+
+                    h4 {
                         font-size: 2rem;
                     }
                 }
-                &__content{
-                    ul{
-                        li{
+
+                &__content {
+                    ul {
+                        li {
                             font-size: 1.4rem;
                         }
                     }
                 }
             }
         }
-        .button__prices{
+
+        .button__prices {
             margin: 0;
             height: 30px;
             width: 100px;
             line-height: 30px;
         }
     }
+    .footer{
+        background-position: top;
+    }
 }
 
-@media screen and (max-width:609px){
-    .minombre{
+@media screen and (max-width:609px) {
+    .minombre {
         display: none;
     }
-    .alejo{
+
+    .alejo {
         font-size: 3rem;
     }
-    #servicios{
+
+    #servicios {
         height: 1500px;
     }
-    .div__servicios{
+
+    .div__servicios {
         height: 1500px;
+        padding-top: 130px;
     }
-    .servicios__diseño{
+
+    .servicios__diseño {
         width: 100%;
         height: 20em;
-        p{
+
+
+        p {
             font-size: 1rem;
         }
     }
-    .servicios{
+
+    .servicios {
         @include flex(flex, row, wrap, center, center);
         align-content: flex-start;
         width: 100%;
-        &__svg{
+
+        &__svg {
             font-size: 3rem;
             margin-bottom: 5px;
         }
     }
-    .trabajos__article{
+    .trabajos{
+        padding-top: 130px;
+    }
+    .trabajos__article {
         padding: 0;
-        &__title{
-            h2{
+
+        &__title {
+            h2 {
                 font-size: 2rem;
             }
-            p{
+
+            p {
                 font-size: 1rem;
             }
         }
     }
-    .precios__note{
+
+    .precios__note {
         padding: 20px;
     }
-    .contacto{
-        padding: 100px 30px 20px 30px;
-        h2{
+
+    .contacto {
+        padding: 130px 30px 20px 30px;
+
+        h2 {
             font-size: 2rem;
         }
-        h4{
+
+        h4 {
             font-size: 1.5rem;
         }
     }
-    .formulario{
+
+    .formulario {
         padding: 0 30px;
     }
-    .instagram{
+
+    .instagram {
         height: 60px;
         width: 60px;
         line-height: 45px;
     }
-    .github{
+
+    .github {
         height: 60px;
         width: 60px;
         line-height: 45px;
     }
-    .mail{
+
+    .mail {
         height: 60px;
         width: 60px;
         line-height: 45px;
     }
-    .whatsapp{
+
+    .whatsapp {
         height: 60px;
         width: 60px;
         line-height: 45px;
     }
-    .footer__container{
+
+    .footer__container {
         top: 350px;
     }
 }
-@media screen and(max-width:550px){
-    #form{
+
+@media screen and(max-width:550px) {
+    #tudeveloper {
+        height: 750px;
+    }
+
+    .section__container {
+        height: 750px;
+    }
+    #form {
         height: 300px;
     }
-    .light-box{
+
+    .light-box {
         align-content: flex-start;
     }
-    .nombre{
+
+    .nombre {
         width: 100%;
         font-size: 1rem;
     }
-    .email{
+
+    .email {
         width: 100%;
         font-size: 1rem;
     }
-    input{
+
+    input {
         margin: 0;
         padding: 5px;
     }
-    textarea{
+
+    textarea {
         margin: 0;
         padding: 0;
         height: 100px;
     }
 }
-@media screen and (max-width:360px){
-    #tudeveloper{
-        height: 650px;
-    }
-    .section__container{
-        height: 650px;
-    }
-    .align__p__text{
+
+@media screen and (max-width:360px) {
+    .align__p__text {
         height: 100%;
     }
-    .precios__container__landing{
+
+    .precios__container__landing {
         height: 500px;
     }
-    .precios__container__inst{
+
+    .precios__container__inst {
         height: 500px;
     }
-    .precios__container__ecommerce{
+
+    .precios__container__ecommerce {
         height: 500px;
     }
 }

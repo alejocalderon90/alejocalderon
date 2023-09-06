@@ -123,11 +123,14 @@ p {
 
 .navbar {
   display: none;
-  border-radius: 20px; }
+  border-radius: 20px;
+  background: white;
+  transition: all 0.3s ease-in-out; }
 
 #home {
   height: 800px;
   background-image: url(../img/mono.webp);
+  background-position: top;
   background-attachment: fixed;
   background-repeat: no-repeat;
   background-size: cover; }
@@ -736,7 +739,7 @@ textarea {
 
 .footer {
   background-image: url(../img/mono3.webp);
-  background-position: top;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -882,12 +885,25 @@ textarea {
     padding: 5px; } }
 
 @media screen and (max-width: 849px) {
+  .header {
+    height: 130px; }
+    .header__container {
+      height: 130px; }
   .header__container__menu {
-    height: 100px; }
+    height: 130px;
+    justify-content: flex-end; }
+    .header__container__menu__ul {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center; }
   .nav {
     display: none; }
   .navbar {
-    display: flex; }
+    display: flex;
+    float: inline-end; }
   #home {
     background-position: top; }
   .home__container {
@@ -914,18 +930,29 @@ textarea {
     .servicios__diseño h2 {
       font-size: 1.5rem; }
   .precios {
-    padding: 20px 20px; } }
+    padding: 100px 20px; } }
 
 @media screen and (max-width: 675px) {
+  #home {
+    background-image: url(../img/mono4.webp);
+    background-position: top; }
+  #servicios {
+    background-image: url(../img/desktop.webp);
+    background-position: center; }
+  #trabajos {
+    background-image: url(../img/desktop.webp);
+    background-position: center; }
   .tudeveloper {
-    padding: 10px; }
-    .tudeveloper h2 {
-      font-size: 2rem; }
-    .tudeveloper p {
-      padding: 0;
-      font-size: 1.2rem; }
+    padding: 130px 10px 0 10px; }
+  .align {
+    font-size: 2.5rem; }
+    .align__p {
+      font-size: 1.8rem; }
+      .align__p__text {
+        padding: 0;
+        font-size: 1.2rem; }
   .precios {
-    padding: 5px 5px;
+    padding: 130px 5px;
     width: 100%; }
     .precios__text h2 {
       font-size: 2rem; }
@@ -972,7 +999,9 @@ textarea {
       margin: 0;
       height: 30px;
       width: 100px;
-      line-height: 30px; } }
+      line-height: 30px; }
+  .footer {
+    background-position: top; } }
 
 @media screen and (max-width: 609px) {
   .minombre {
@@ -982,7 +1011,8 @@ textarea {
   #servicios {
     height: 1500px; }
   .div__servicios {
-    height: 1500px; }
+    height: 1500px;
+    padding-top: 130px; }
   .servicios__diseño {
     width: 100%;
     height: 20em; }
@@ -999,6 +1029,8 @@ textarea {
     .servicios__svg {
       font-size: 3rem;
       margin-bottom: 5px; }
+  .trabajos {
+    padding-top: 130px; }
   .trabajos__article {
     padding: 0; }
     .trabajos__article__title h2 {
@@ -1008,7 +1040,7 @@ textarea {
   .precios__note {
     padding: 20px; }
   .contacto {
-    padding: 100px 30px 20px 30px; }
+    padding: 130px 30px 20px 30px; }
     .contacto h2 {
       font-size: 2rem; }
     .contacto h4 {
@@ -1035,6 +1067,10 @@ textarea {
     top: 350px; } }
 
 @media screen and (max-width: 550px) {
+  #tudeveloper {
+    height: 750px; }
+  .section__container {
+    height: 750px; }
   #form {
     height: 300px; }
   .light-box {
@@ -1054,10 +1090,6 @@ textarea {
     height: 100px; } }
 
 @media screen and (max-width: 360px) {
-  #tudeveloper {
-    height: 650px; }
-  .section__container {
-    height: 650px; }
   .align__p__text {
     height: 100%; }
   .precios__container__landing {
