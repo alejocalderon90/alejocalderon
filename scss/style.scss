@@ -125,10 +125,6 @@
 
 
 .minombre {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-}
-
-.alejo {
     font-size: 80px;
     color: rgb(154, 0, 100);
     letter-spacing: 10px;
@@ -400,7 +396,6 @@
                     border: 2px #ff8800 solid;
                     border-radius: 50%;
                     padding: 10px;
-                    rotate: 45deg;
                 }
 
                 h4 {
@@ -456,7 +451,6 @@
                     border: 2px #ff8800 solid;
                     border-radius: 50%;
                     padding: 10px;
-                    rotate: 45deg;
                 }
 
                 h4 {
@@ -513,8 +507,7 @@
                     font-size: 80px;
                     border: 2px #ff8800 solid;
                     border-radius: 50%;
-                    padding: 20px;
-                    rotate: -90deg;
+                    padding: 10px;
                 }
 
                 h4 {
@@ -1138,7 +1131,7 @@ textarea {
 
                 &__title {
                     svg {
-                        font-size: 7rem;
+                        font-size: 5rem;
                     }
 
                     h4 {
@@ -1169,14 +1162,6 @@ textarea {
 }
 
 @media screen and (max-width:609px) {
-    .minombre {
-        display: none;
-    }
-
-    .alejo {
-        font-size: 3rem;
-    }
-
     #servicios {
         height: 1500px;
     }

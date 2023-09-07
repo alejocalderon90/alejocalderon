@@ -151,9 +151,6 @@ p {
   padding-top: 50px; }
 
 .minombre {
-  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; }
-
-.alejo {
   font-size: 80px;
   color: #9a0064;
   letter-spacing: 10px;
@@ -427,8 +424,7 @@ p {
           font-size: 80px;
           border: 2px #ff8800 solid;
           border-radius: 50%;
-          padding: 10px;
-          rotate: 45deg; }
+          padding: 10px; }
         .precios__container__landing__title h4 {
           font-size: 25px;
           padding-top: 10px; }
@@ -475,8 +471,7 @@ p {
           font-size: 80px;
           border: 2px #ff8800 solid;
           border-radius: 50%;
-          padding: 10px;
-          rotate: 45deg; }
+          padding: 10px; }
         .precios__container__inst__title h4 {
           font-size: 25px;
           padding-top: 10px; }
@@ -525,8 +520,7 @@ p {
           font-size: 80px;
           border: 2px #ff8800 solid;
           border-radius: 50%;
-          padding: 20px;
-          rotate: -90deg; }
+          padding: 10px; }
         .precios__container__ecommerce__title h4 {
           font-size: 25px;
           padding-top: 10px; }
@@ -990,7 +984,7 @@ textarea {
         width: 100%;
         height: 400px; }
         .precios__container__ecommerce__title svg {
-          font-size: 7rem; }
+          font-size: 5rem; }
         .precios__container__ecommerce__title h4 {
           font-size: 2rem; }
         .precios__container__ecommerce__content ul li {
@@ -1004,10 +998,6 @@ textarea {
     background-position: top; } }
 
 @media screen and (max-width: 609px) {
-  .minombre {
-    display: none; }
-  .alejo {
-    font-size: 3rem; }
   #servicios {
     height: 1500px; }
   .div__servicios {
