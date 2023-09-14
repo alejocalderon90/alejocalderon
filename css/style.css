@@ -731,6 +731,13 @@ textarea {
   background: green;
   transition: all 0.8s ease; }
 
+.datos {
+  width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  color: white;
+  padding: 20px; }
+
 .footer {
   background-image: url(../img/mono3.webp);
   background-position: center;
@@ -764,96 +771,6 @@ textarea {
         font-weight: bold;
         padding-left: 10px;
         padding-bottom: 15px; }
-
-.behind {
-  min-height: 100vh;
-  font-family: canada-type-gibson, sans-serif;
-  font-weight: 300;
-  font-size: 1.25rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: hidden;
-  background-color: #ea00ff; }
-
-:root {
-  --color-primary: #f6aca2;
-  --color-secondary: #f49b90;
-  --color-tertiary: #f28b7d;
-  --color-quaternary: #f07a6a;
-  --color-quinary: #ee6352;
-  /*
-  --color-primary: #5192ED;
-  --color-secondary: #69A1F0;
-  --color-tertiary: #7EAEF2;
-  --color-quaternary: #90BAF5;
-  --color-quinary: #A2C4F5;
-  */ }
-
-.content {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  text-align: center; }
-
-.text_shadows {
-  text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
-  font-family: bungee, sans-serif;
-  font-weight: 400;
-  text-transform: uppercase;
-  font-size: calc(2rem + 5vw);
-  text-align: center;
-  margin: 0;
-  color: var(--color-primary);
-  animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
-  letter-spacing: 0.4rem;
-  width: 100%; }
-
-.text-p {
-  width: 100%;
-  padding: 30px;
-  color: white;
-  font-size: 10px;
-  font-weight: bold; }
-
-@keyframes shadows {
-  0% {
-    text-shadow: none; }
-  10% {
-    text-shadow: 3px 3px 0 var(--color-secondary); }
-  20% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary); }
-  30% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary); }
-  40% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary); }
-  50% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary); }
-  60% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary); }
-  70% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary); }
-  80% {
-    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary); }
-  90% {
-    text-shadow: 3px 3px 0 var(--color-secondary); }
-  100% {
-    text-shadow: none; } }
-
-@keyframes move {
-  0% {
-    transform: translate(0px, 0px); }
-  40% {
-    transform: translate(-12px, -12px); }
-  50% {
-    transform: translate(-12px, -12px); }
-  60% {
-    transform: translate(-12px, -12px); }
-  100% {
-    transform: translate(0px, 0px); } }
 
 @media screen and (max-width: 1200px) {
   #Video {
