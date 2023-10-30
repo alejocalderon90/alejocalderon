@@ -371,7 +371,7 @@ p {
       .trabajos__article__pages a {
         padding: 20px; }
         .trabajos__article__pages a:hover {
-          transform: scale(1.2);
+          filter: blur(3px);
           transition: all 0.5s; }
     .trabajos__article__video {
       text-align: center;
