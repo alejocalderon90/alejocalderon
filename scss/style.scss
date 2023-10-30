@@ -745,7 +745,7 @@ textarea {
     transition: all 0.8s ease;
 }
 
-.datos{
+.datos {
     width: 100%;
     text-align: center;
     font-size: 1rem;
@@ -876,13 +876,15 @@ textarea {
         padding: 80px 0;
         text-align: center;
     }
-    .minombre{
+
+    .minombre {
         font-size: 5rem;
         width: 100%;
         height: 150px;
         margin: 0;
     }
-    .webdeveloper{
+
+    .webdeveloper {
         font-size: 2rem;
         width: 100%;
         height: 80px;
@@ -908,18 +910,21 @@ textarea {
 }
 
 @media screen and (max-width:675px) {
-    #home{
+    #home {
         background-image: url(../img/mono4.webp);
         background-position: top;
     }
-    #servicios{
+
+    #servicios {
         background-image: url(../img/desktop.webp);
         background-position: center;
     }
-    #trabajos{
+
+    #trabajos {
         background-image: url(../img/desktop.webp);
         background-position: center;
     }
+
     .tudeveloper {
         padding: 130px 10px 0 10px;
     }
@@ -1036,7 +1041,8 @@ textarea {
             line-height: 30px;
         }
     }
-    .footer{
+
+    .footer {
         background-position: top;
     }
 }
@@ -1071,9 +1077,11 @@ textarea {
             margin-bottom: 5px;
         }
     }
-    .trabajos{
+
+    .trabajos {
         padding-top: 130px;
     }
+
     .trabajos__article {
         padding: 0;
 
@@ -1145,6 +1153,7 @@ textarea {
     .section__container {
         height: 750px;
     }
+
     #form {
         height: 300px;
     }
