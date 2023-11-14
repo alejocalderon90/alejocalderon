@@ -144,17 +144,34 @@ p {
   justify-content: space-evenly;
   align-items: center; }
 
+@keyframes toright {
+  from {
+    transform: translateX(100%);
+    filter: blur(5px); }
+  to {
+    transform: translateX(0);
+    filter: blur(0); } }
+
 .home__text {
   width: 700px;
   padding-left: 100px;
   padding-right: 0;
-  padding-top: 50px; }
+  padding-top: 50px;
+  animation: toright 2s; }
 
 .minombre {
   font-size: 80px;
   color: #9a0064;
   letter-spacing: 10px;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; }
+
+@keyframes togglersup {
+  from {
+    transform: translateY(100%);
+    filter: blur(5px); }
+  to {
+    transform: translateY(0);
+    filter: blur(0); } }
 
 .home__toggles {
   float: right;
@@ -163,7 +180,8 @@ p {
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  animation: togglersup 2s; }
 
 .svg__instagram,
 .svg__github,
@@ -236,6 +254,12 @@ p {
   background-attachment: fixed;
   height: 900px; }
 
+@keyframes fade-in {
+  from {
+    opacity: 0; }
+  to {
+    opacity: 1; } }
+
 .div__servicios {
   background: rgba(0, 0, 0, 0.407);
   height: 900px;
@@ -245,7 +269,8 @@ p {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  animation: fade-in 3s; }
 
 .h2__servicios {
   width: 100%;
