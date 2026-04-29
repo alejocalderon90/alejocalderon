@@ -284,6 +284,31 @@ body{
   background: rgba(255,255,255,.04);
 }
 
+.mobile-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mobile-video video {
+  aspect-ratio: 9 / 16;
+  width: 55%;
+  max-width: 260px;
+  object-fit: contain;
+  background: #05070d;
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,.1);
+}
+
+.telco-video video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  background: #05070d;
+  border-radius: 12px;
+  display: block;
+}
+
 .video-info {
   padding: 16px;
 }
@@ -444,5 +469,20 @@ body{
 @media (max-width: 620px) {
   .video-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .mobile-video video {
+    width: 70%;
+    max-width: 320px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mobile-video video {
+    width: 100%;
+    max-width: 100%;
+    aspect-ratio: 9 / 16;
   }
 }
