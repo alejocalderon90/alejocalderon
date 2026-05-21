@@ -337,6 +337,25 @@ body{
   line-height: 1.5;
 }
 
+.weblink {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--muted);
+  font-weight: bold;
+  font-size: .98rem;
+  line-height: 1.5;
+  cursor: pointer;
+  text-decoration: none;
+  transition: color .25s ease, font-weight .25s ease;
+}
+
+.weblink:hover {
+  color: #fff;
+  font-weight: bolder;
+  text-decoration: none;
+}
+
+
 /* Skills */
 .skills-marquee{overflow:hidden; border:1px solid rgba(255,255,255,.08); border-radius:14px; margin-bottom:18px; background:rgba(15,20,38,.6)}
 .skills-marquee .track{display:flex; gap:30px; padding:12px 18px; white-space:nowrap; animation:marquee 24s linear infinite}
