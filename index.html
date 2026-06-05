@@ -343,6 +343,27 @@
     </div>
 
     <div class="video-grid">
+
+      <article class="video-card">
+        <video src="videos/agente-n8n.mp4" muted autoplay loop playsinline preload="none"></video>
+        <div class="video-info">
+          <span>Agente IA con n8n</span>
+          <h3>Asistente de ventas y atencion al cliente</h3>
+          <p>Un agente de inteligencia artificial que toma pedidos, realiza cobros, responde consultas sobre productos, envía confirmaciones via mail y realiza seguimiento de ventas y pedidos en google sheets.</p>
+          <a class="weblink" href="https://www.linkedin.com/posts/alejo-calderon_n8n-automatizacion-ia-ugcPost-7468646663868391424-ZOQ-/?utm_source=share&utm_medium=member_android&rcm=ACoAADzL3AMB0fP6ypZOpydcgJxunYrS-yuOB00">Ir a Sitio</a>
+        </div>
+      </article>
+
+      <article class="video-card">
+        <video src="videos/novatech.mp4" muted autoplay loop playsinline preload="none"></video>
+        <div class="video-info">
+          <span>E-commerce</span>
+          <h3>Tienda online funcional</h3>
+          <p>Tienda online mobile-first con carrito, checkout, órdenes y panel admin integrado.</p>
+          <a class="weblink" href="https://novatech-nu.vercel.app/">Ir a Sitio</a>
+        </div>
+      </article>
+
       <article class="video-card">
         <video src="videos/Grabación de pantalla quark.mp4" muted autoplay loop playsinline preload="none"></video>
         <div class="video-info">
@@ -389,7 +410,9 @@
           <span>Automatización</span>
           <h3>Flujo automatizado en Make</h3>
           <p>Proceso conectado entre formularios, planillas, correos y avisos.</p>
-          <a class="weblink" href="https://www.linkedin.com/posts/alejo-calderon_ai-autamation-nocode-ugcPost-7438222868704010241-ZmaF?utm_source=share&utm_medium=member_desktop&rcm=ACoAADzL3AMB0fP6ypZOpydcgJxunYrS-yuOB00">Ir a Sitio</a>
+          <a class="weblink"
+            href="https://www.linkedin.com/posts/alejo-calderon_ai-autamation-nocode-ugcPost-7438222868704010241-ZmaF?utm_source=share&utm_medium=member_desktop&rcm=ACoAADzL3AMB0fP6ypZOpydcgJxunYrS-yuOB00">Ir
+            a Sitio</a>
         </div>
       </article>
 
@@ -416,15 +439,6 @@
         </div>
       </article>
 
-      <article class="video-card">
-        <video src="videos/novatech.mp4" muted autoplay loop playsinline preload="none"></video>
-        <div class="video-info">
-          <span>E-commerce</span>
-          <h3>Tienda online funcional</h3>
-          <p>Tienda online mobile-first con carrito, checkout, órdenes y panel admin integrado.</p>
-          <a class="weblink" href="https://novatech-nu.vercel.app/">Ir a Sitio</a>
-        </div>
-      </article>
     </div>
   </section>
 
@@ -539,10 +553,13 @@
   </section>
 
   <!-- Contacto -->
+  <!-- Contacto -->
   <section id="contacto" class="section reveal">
     <div class="contact-card">
       <p class="eyebrow">Hablemos</p>
+
       <h2>¿Qué proceso te está haciendo perder tiempo?</h2>
+
       <p>
         Contame qué tarea, archivo o circuito querés ordenar y vemos si conviene automatizarlo,
         simplificarlo o crear una solución digital a medida.
@@ -552,17 +569,89 @@
         Consultoría en automatización de procesos en Argentina y LATAM.
       </p>
 
-      <div class="contact-actions">
-        <a class="btn btn-primary"
-          href="https://wa.me/5492304513220?text=Hola%20Alejo,%20quiero%20consultar%20por%20una%20automatización%20para%20mi%20negocio."
-          target="_blank" rel="noopener">
-          Escribirme por WhatsApp
-        </a>
+      <form class="contact-form" id="leadForm"
+        data-webhook-url="https://hook.us2.make.com/419jveimfjrmli62lny2flay9hevmjzw" novalidate>
+        <div class="row">
+          <div class="field">
+            <label for="leadName">Nombre</label>
+            <input type="text" id="leadName" name="nombre" placeholder="Tu nombre" autocomplete="name" required />
+          </div>
 
-        <a class="btn btn-ghost"
-          href="mailto:santiago_alejo_calderon@hotmail.com?subject=Consulta%20por%20automatización%20de%20procesos&body=Hola%20Alejo,%20quiero%20consultar%20por...">
-          Enviar email
-        </a>
+          <div class="field">
+            <label for="leadEmail">Email</label>
+            <input type="email" id="leadEmail" name="email" placeholder="tu@email.com" autocomplete="email" required />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="field">
+            <label for="leadPhone">Teléfono / WhatsApp</label>
+            <input type="tel" id="leadPhone" name="telefono" placeholder="Ej: +54 9 11..." autocomplete="tel"
+              required />
+          </div>
+
+          <div class="field">
+            <label for="leadService">Servicio de interés</label>
+            <select id="leadService" name="servicio" required>
+              <option value="">Seleccioná una opción</option>
+              <option value="Automatización de procesos">Automatización de procesos</option>
+              <option value="Automatización de Excel">Automatización de Excel</option>
+              <option value="Flujos con Make / n8n / Power Automate">Flujos con Make / n8n / Power Automate</option>
+              <option value="Chatbots y asistentes digitales">Chatbots y asistentes digitales</option>
+              <option value="Sitio web o solución digital">Sitio web o solución digital</option>
+              <option value="Reportes / Power BI / Excel">Reportes / Power BI / Excel</option>
+              <option value="Otro">Otro</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="leadMessage">Mensaje</label>
+          <textarea id="leadMessage" name="mensaje" rows="5"
+            placeholder="Contame brevemente qué necesitás automatizar, ordenar o crear..." required></textarea>
+        </div>
+
+        <!-- Campo anti-spam oculto -->
+        <input type="text" name="website" id="leadWebsite" class="hidden-field" tabindex="-1" autocomplete="off" />
+
+        <button class="btn btn-primary" id="leadSubmit" type="submit" disabled>
+          Enviar consulta
+        </button>
+
+        <div class="success-card" id="successCard" hidden>
+          <div class="success-icon">
+            <span>✓</span>
+          </div>
+
+          <h3>¡Mensaje enviado!</h3>
+
+          <p>
+            Gracias por contactarnos. Te responderemos muy pronto.
+          </p>
+
+          <button class="btn btn-ghost" type="button" id="newMessageBtn">
+            Enviar otra consulta
+          </button>
+        </div>
+
+        <p class="form-message" id="formMessage" aria-live="polite"></p>
+      </form>
+
+      <div class="contact-alt">
+        <p>También podés escribirme directo por:</p>
+
+        <div class="contact-actions">
+          <a class="btn btn-ghost"
+            href="https://wa.me/5492304513220?text=Hola%20Alejo,%20quiero%20consultar%20por%20una%20automatización%20para%20mi%20negocio."
+            target="_blank" rel="noopener">
+            WhatsApp
+          </a>
+
+          <a class="btn btn-ghost"
+            href="mailto:santiago_alejo_calderon@hotmail.com?subject=Consulta%20por%20automatización%20de%20procesos&body=Hola%20Alejo,%20quiero%20consultar%20por...">
+            Email
+          </a>
+        </div>
       </div>
 
       <div class="socials">
