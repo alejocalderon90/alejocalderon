@@ -145,14 +145,17 @@
     document.querySelectorAll('[data-filter]').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
     let count = 0;
     document.querySelectorAll('.project').forEach(card => {
-      card.hidden = button.dataset.filter !== 'all' && card.dataset.category !== button.dataset.filter;
+      card.hidden = button.dataset.filter !== 'all' && !card.dataset.category.split(' ').includes(button.dataset.filter);
       if (!card.hidden) count++;
+      else card.querySelector('video')?.pause();
     });
     document.getElementById('filterStatus').textContent = `${count} proyectos`;
     animate(document.querySelectorAll('.project:not([hidden])'), { y: [18, 0], opacity: [0, 1], duration: 450, delay: window.anime?.stagger ? window.anime.stagger(60) : 0, ease: 'outQuad' });
     updateScroll();
   }));
   let opener;
+  let dialogVideo;
+  let dialogGeneration = 0;
   const createLink = (label, href, primary = false) => {
     const link = document.createElement('a');
     link.textContent = `${label} ↗`;
@@ -165,13 +168,21 @@
     const project = projects.find(item => item.id === button.dataset.project);
     if (!project) return;
     opener = button;
+    const generation = ++dialogGeneration;
     const visual = document.getElementById('dialogVisual');
     const preview = button.closest('.project').querySelector('.project-visual');
     const fallback = preview.querySelector('.video-fallback').cloneNode(true);
     visual.replaceChildren(fallback);
     document.getElementById('dialogTitle').textContent = project.title;
     document.getElementById('dialogKind').textContent = project.kind;
-    document.getElementById('dialogText').textContent = project.text;
+    document.getElementById('dialogText').textContent = project.desc;
+    document.getElementById('dialogCase').replaceChildren(...['problem', 'solution', 'result'].flatMap((key, index) => {
+      const title = document.createElement('dt');
+      title.textContent = ['Problema', 'Solución', 'Resultado / alcance'][index];
+      const description = document.createElement('dd');
+      description.textContent = project[key];
+      return [title, description];
+    }));
     document.getElementById('dialogNote').textContent = project.note;
     document.getElementById('dialogStack').replaceChildren(...project.stack.map(item => {
       const li = document.createElement('li'); li.textContent = item; return li;
@@ -189,14 +200,22 @@
     document.body.classList.add('no-scroll');
     if (project.video) {
       const video = document.createElement('video');
+      dialogVideo = video;
       video.controls = true; video.preload = 'metadata'; video.playsInline = true;
       video.setAttribute('aria-label', `Grabación de ${project.title}`);
       video.addEventListener('loadedmetadata', () => {
-        if (!dialog.open || document.getElementById('dialogTitle').textContent !== project.title) return;
+        if (!dialog.open || generation !== dialogGeneration) return;
         visual.replaceChildren(video);
       }, { once: true });
-      video.addEventListener('error', () => video.remove(), { once: true });
-      video.src = `videos/${encodeURIComponent(project.video)}`;
+      video.addEventListener('error', () => {
+        if (!dialog.open || generation !== dialogGeneration) return;
+        const message = document.createElement('p');
+        message.className = 'dialog-video-label';
+        message.textContent = 'No se pudo cargar la grabación. Podés volver a abrir el detalle para reintentar.';
+        visual.replaceChildren(fallback, message);
+      }, { once: true });
+      video.poster = project.poster;
+      video.src = project.video;
     }
   }));
   dialog.querySelector('.dialog-close').addEventListener('click', () => dialog.close());
@@ -206,7 +225,13 @@
     if (e.clientX < rect.left || e.clientX > rect.right || e.clientY < rect.top || e.clientY > rect.bottom) dialog.close();
   });
   dialog.addEventListener('close', () => {
-    dialog.querySelector('video')?.pause();
+    dialogGeneration++;
+    if (dialogVideo) {
+      dialogVideo.pause();
+      dialogVideo.removeAttribute('src');
+      dialogVideo.load();
+      dialogVideo = undefined;
+    }
     document.body.classList.remove('no-scroll');
     opener?.focus({ preventScroll: true });
   });
@@ -242,11 +267,11 @@
       submit.hidden = true;
       status.textContent = 'Consulta enviada correctamente.';
     } catch {
-      status.textContent = 'No pudimos confirmar el envío. Escribime por WhatsApp o email para continuar.';
+      status.textContent = 'No pude confirmar el envío. Escribime por WhatsApp o email para continuar.';
     } finally {
       sending = false;
       submit.disabled = false;
-      submit.textContent = 'Enviar consulta';
+      submit.textContent = 'Pedir presupuesto';
     }
   });
   document.getElementById('newMessageBtn').addEventListener('click', () => {
@@ -269,6 +294,7 @@
     video.addEventListener('loadeddata', () => container.classList.add('has-video'));
     video.addEventListener('error', () => {
       container.classList.remove('has-video');
+      container.classList.add('video-error');
       container.querySelector('.preview-motion').hidden = true;
     });
     video.addEventListener('play', () => setPlayback(video, true));
@@ -282,12 +308,8 @@
   });
   if ('IntersectionObserver' in window) {
     const videoObserver = new IntersectionObserver(entries => entries.forEach(entry => {
-      const video = entry.target;
-      if (entry.isIntersecting && !video.src) {
-        video.preload = 'metadata'; video.src = video.dataset.src; video.load();
-      }
-      if (!entry.isIntersecting) video.pause();
-    }), { rootMargin: '150px 0px' });
+      if (!entry.isIntersecting) entry.target.pause();
+    }));
     previews.forEach(video => videoObserver.observe(video));
   }
   document.addEventListener('visibilitychange', () => {
