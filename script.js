@@ -50,6 +50,85 @@
   updateScroll();
   animate('.hero-line', { y: [28, 0], opacity: [0, 1], duration: 950, delay: window.anime?.stagger ? window.anime.stagger(100) : 0, ease: 'outExpo' });
   animate('.system-art', { y: [25, 0], opacity: [0, 1], duration: 1100, ease: 'outExpo' });
+  const system = document.querySelector('.system-art');
+  const motionButton = system.querySelector('.system-motion');
+  const flowLinks = [...system.querySelectorAll('.flow-link')];
+  const flowPulses = [...system.querySelectorAll('.flow-pulse')];
+  const flowNodes = [...system.querySelectorAll('.system-node')];
+  const flowProgress = flowLinks.map(() => ({ value: 0 }));
+  let systemTimeline;
+  let orbitAnimation;
+  let systemVisible = true;
+  let motionPaused = false;
+  const syncSystemMotion = () => {
+    const running = !reduceMotion.matches && !motionPaused && systemVisible && !document.hidden;
+    [systemTimeline, orbitAnimation].forEach(animation => {
+      if (running) animation?.resume();
+      else animation?.pause();
+    });
+  };
+  const resetSystemMotion = () => {
+    systemTimeline?.revert();
+    orbitAnimation?.revert();
+    systemTimeline = undefined;
+    orbitAnimation = undefined;
+    flowLinks.forEach(link => { link.style.strokeDasharray = ''; link.style.strokeDashoffset = ''; });
+    flowPulses.forEach(pulse => { pulse.style.opacity = '0'; });
+    motionButton.hidden = true;
+  };
+  const buildSystemMotion = () => {
+    resetSystemMotion();
+    if (reduceMotion.matches || !window.anime?.createTimeline) return;
+    const lengths = flowLinks.map(link => link.getTotalLength());
+    flowLinks.forEach((link, i) => {
+      link.style.strokeDasharray = String(lengths[i]);
+      link.style.strokeDashoffset = String(lengths[i]);
+      flowProgress[i].value = 0;
+    });
+    systemTimeline = window.anime.createTimeline({
+      autoplay: false, loop: true, loopDelay: 1100,
+      defaults: { ease: 'inOutQuad' },
+      onUpdate: () => flowLinks.forEach((link, i) => {
+        const point = link.getPointAtLength(lengths[i] * flowProgress[i].value);
+        flowPulses[i].setAttribute('cx', String(point.x));
+        flowPulses[i].setAttribute('cy', String(point.y));
+      })
+    });
+    flowLinks.forEach((link, i) => {
+      const start = 500 + i * 1150;
+      systemTimeline
+        .add(link, { strokeDashoffset: [lengths[i], 0], duration: 950, ease: 'linear' }, start)
+        .add(flowProgress[i], { value: [0, 1], duration: 950, ease: 'linear' }, start)
+        .add(flowPulses[i], { opacity: [0, 1], duration: 100 }, start)
+        .add(flowPulses[i], { opacity: 0, duration: 150 }, start + 900)
+        .add(flowNodes[i], { backgroundColor: ['#eeece5', '#d9dfca'], borderColor: ['#abb19e', '#be4927'], duration: 400 }, start);
+    });
+    systemTimeline
+      .add('.system-core', { scale: [1, 1.12], duration: 350 }, 1300)
+      .add('.system-core', { scale: 1, duration: 450 }, 1650)
+      .add(flowNodes[2], { boxShadow: ['5px 5px #cdd1c3', '8px 8px #be4927'], duration: 450 }, 3600)
+      .add(flowNodes[2], { boxShadow: '5px 5px #cdd1c3', duration: 450 }, 4300);
+    orbitAnimation = window.anime.animate('.orbit-two', { rotate: [0, 360], duration: 30000, loop: true, ease: 'linear', autoplay: false });
+    motionButton.hidden = false;
+    syncSystemMotion();
+  };
+  motionButton.addEventListener('click', () => {
+    motionPaused = !motionPaused;
+    motionButton.setAttribute('aria-pressed', String(motionPaused));
+    motionButton.setAttribute('aria-label', motionPaused ? 'Reanudar animación del proceso' : 'Pausar animación del proceso');
+    motionButton.textContent = motionPaused ? 'Reanudar ▶' : 'Pausar Ⅱ';
+    syncSystemMotion();
+  });
+  document.addEventListener('visibilitychange', syncSystemMotion);
+  reduceMotion.addEventListener('change', buildSystemMotion);
+  if ('IntersectionObserver' in window) {
+    const systemObserver = new IntersectionObserver(entries => {
+      systemVisible = entries[0].isIntersecting;
+      syncSystemMotion();
+    }, { threshold: .1 });
+    systemObserver.observe(system);
+  }
+  buildSystemMotion();
   if ('IntersectionObserver' in window) {
     const observer = new IntersectionObserver(entries => entries.forEach(entry => {
       if (!entry.isIntersecting) return;
